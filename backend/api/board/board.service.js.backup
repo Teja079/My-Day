@@ -5,8 +5,8 @@ const ObjectId = require('mongodb').ObjectId
 async function query(filterBy) {
     try {
         const criteria = {}
-        if(filterBy.title) criteria.title = { $regex: filterBy.title, $options: 'i' }
-        if(filterBy.isStarred) criteria.isStarred = filterBy.isStarred
+       if(filterBy.title) criteria.title = { $regex: filterBy.title, $options: 'i' }
+       if(filterBy.isStarred) criteria.isStarred = filterBy.isStarred
         const collection = await dbService.getCollection('board')
         var boards = await collection.find(criteria).toArray()
         return boards
@@ -17,18 +17,12 @@ async function query(filterBy) {
 }
 
 async function getById(boardId) {
-    // CRITICAL FIX: Validate boardId BEFORE trying to use ObjectId
-    if (!boardId || typeof boardId !== 'string' || !ObjectId.isValid(boardId)) {
-        logger.error(`Invalid ObjectId requested: "${boardId}"`)
-        return null
-    }
-    
     try {
         const collection = await dbService.getCollection('board')
-        const board = await collection.findOne({ _id: ObjectId(boardId) })
+        const board = collection.findOne({ _id: ObjectId(boardId) })
         return board
     } catch (err) {
-        logger.error(`Error finding board ${boardId}`, err)
+        logger.error(`while finding board ${boardId}`, err)
         throw err
     }
 }

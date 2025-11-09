@@ -5,8 +5,8 @@ const ObjectId = require('mongodb').ObjectId
 async function query(filterBy) {
     try {
         const criteria = {}
-        if(filterBy.title) criteria.title = { $regex: filterBy.title, $options: 'i' }
-        if(filterBy.isStarred) criteria.isStarred = filterBy.isStarred
+       if(filterBy.title) criteria.title = { $regex: filterBy.title, $options: 'i' }
+       if(filterBy.isStarred) criteria.isStarred = filterBy.isStarred
         const collection = await dbService.getCollection('board')
         var boards = await collection.find(criteria).toArray()
         return boards

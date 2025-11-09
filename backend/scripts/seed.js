@@ -16,4 +16,21 @@ async function run() {
       {
         title: 'My First Board',
         createdAt: Date.now(),
-        created
+        createdBy: { _id: 'seed-user', fullname: 'You' },
+        members: [],
+        labels: [],
+        groups: [],
+        activities: []
+      }
+    ])
+    console.log('Seeded sample boards')
+  } else {
+    console.log('Boards already exist:', count)
+  }
+  await client.close()
+}
+
+run().catch((err) => {
+  console.error('Seed failed:', err)
+  process.exit(1)
+})
