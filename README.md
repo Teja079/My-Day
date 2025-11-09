@@ -1,148 +1,92 @@
+# MyDay — Pixel-Perfect Monday.com Clone (React + Node.js)
 
-# MyDay - pixel perfect, E2E clone of Monday (React + Node.js). 
+**Live demo:** [https://monday-8oy3.onrender.com](https://monday-8oy3.onrender.com)
 
-Table-style task management board app inspired by Monday.com, [Here is my project link](https://monday-8oy3.onrender.com/ "MyDay link").
+MyDay is a table-style task board inspired by Monday.com. I focused on nailing the **look, feel, and interactions** of Monday while adding a few unique twists and solid end-to-end quality: realtime collaboration, robust state management, and Playwright E2E coverage.
 
-For those of you who are already familliar with Monday, we added some intersting and unique features - [features](#application-features).
-If you are not familliar with the App, read about it [here](#monday-description).
-And, if you are tired and just want to see some images of the website, [scroll to the bottom...](#showcase)
+If you already know Monday, jump to the [features](#application-features).  
+If you’re new to Monday, read the short [description](#monday-description).  
+If you just want screenshots, head to the [showcase](#showcase).
 
 ![Main board image](frontend/src/assets/img/readme/table.png "Board-main-page")
 
-___
+---
 
 ### Table of Contents
 - [Recent Updates](#recent-updates)
 - [Monday Description](#monday-description)
 - [Application Features](#application-features)
 - [Technologies](#technologies)
-- [Getting started](#getting-started)
+- [Getting Started](#getting-started)
 - [Showcase](#showcase)
 
 ## Recent Updates
 
 ### 🔧 Task Menu Modal Fixes (Latest)
-**Status:** ✅ **Fully Fixed** - All task menu options now working correctly
+**Status:** ✅ Fully fixed — every menu action works as expected.
 
-Fixed critical issues with the task context menu functionality:
+I resolved several critical context-menu bugs:
+- **Delete Task** — fixed immutable updates so items are actually removed from their groups.
+- **Duplicate Task** — stable cloning with clean IDs and consistent UI refresh.
+- **Create New Item Below** — corrected array copying; insertion works in all groups.
+- **Open Task Modal** — reliable navigation to the task details view.
 
-- **✅ Delete Task** - Fixed immutable state updates to properly remove tasks from groups
-- **✅ Duplicate Task** - Enhanced state management for reliable task duplication  
-- **✅ Create New Item Below** - Fixed array copying to properly insert new tasks
-- **✅ Open Task Modal** - Navigation to task detail view working correctly
-
-**Technical Improvements:**
-- Implemented proper React immutable state patterns
-- Fixed direct object mutations that were causing UI inconsistencies
-- Added comprehensive Playwright test coverage for all menu functions
-- Enhanced error handling and state synchronization
+**Under the hood:**
+- Adopted strict **immutable React state** patterns; removed hidden mutations.
+- Improved error handling and state sync between table and details views.
+- Added **Playwright** tests covering each menu action end-to-end.
 
 ### 🎯 Table Component Restoration
-**Status:** ✅ **Completed** - Table functionality fully operational
+**Status:** ✅ Complete — table is fully operational.
 
-Resolved major rendering issues in the main table view:
+Fixes include:
+- **Component Picker** — resolved `UNKNOWN StatusPicker/MemberPicker/DatePicker` by normalizing registry names from **PascalCase → kebab-case**.
+- **Dynamic Cell Rendering** — robust, data-driven cell components.
+- **Drag & Drop** — stabilized **react-beautiful-dnd** and fixed `draggableId` issues.
+- **Task ID Generation** — introduced reliable unique ID creation.
 
-- **✅ Component Picker Fix** - Resolved "UNKNOWN StatusPicker/MemberPicker/DatePicker" errors
-- **✅ Dynamic Component Rendering** - Fixed component name normalization from PascalCase to kebab-case
-- **✅ React Beautiful DND** - Fixed drag-and-drop functionality and missing draggableId errors
-- **✅ Task ID Generation** - Implemented proper unique ID generation for all tasks
-
-**Magic Link Authentication System** also implemented with email-based login functionality.
+I also implemented **Magic Link authentication** alongside email/password login.
 
 ---
 
 ## Monday Description
-Monday is an app in which you can manage projects and tasks using a table board. A board contains groups, lists and tasks. Usually each project is a board, and the groups and the tasks and titles to do in the project. Users can modify the board and change group and task locations using Drag and Drop.
-Users can work together and watch live changes. 
-There are many other features in monday, such as status, priority, due date for tasks, members and more. 
-Every thing Monday has, we also had. 
-More about it in the [features section](#application-features).
+Monday is a collaborative work manager built around boards: each **board** holds **groups** of **items/tasks** with columns like status, priority, owner, and due date. Users can rearrange everything with Drag & Drop, collaborate live, and track activity.
 
-You are more than welcome to ***check it out*** ( [right here](https://monday-8oy3.onrender.com/ "Github pages link"))
+**MyDay** mirrors these core workflows—D&D, realtime updates, rich task editing, filters, members, and more—so you won’t feel a difference in day-to-day use. Try it here: [MyDay live demo](https://monday-8oy3.onrender.com).
 
 ## Application Features
-- Create ***Boards*** and manage projects: Using ***D&D***, create, remove, duplicate, update groups and tasks, activity log for all the activity in the board, and for each board you can remove and add task columns.
-- Create and edit ***Task*** to the deepest level: statuses, priority, due date, members, file images, numbers, last updated by, duplicate, move, activity log and live chat.
-- ***Groups:*** - Change the color of the group with the palette color modal using ***lodash library***.
- ***Filtering*** by members / group and task title.
-- Google Login, along with regular authentication which is encrypted and safe.
-
-Of course that we included all the small nuances Monday has. You are not supposed to find any differences! 
+- **Boards & Groups**
+  - Create, remove, duplicate, and reorder groups and tasks with **Drag & Drop**.
+  - Per-board **activity log** with who-did-what.
+  - Configurable **columns** you can add/remove.
+- **Deep Task Editing**
+  - Status, priority, due date, members, files/images, numbers, last updated by.
+  - Duplicate, move, and full **activity log** per task.
+  - **Live chat** in the task details panel.
+- **Groups**
+  - **Color picker** (palette) for group headers (lodash-powered utilities).
+  - **Filtering** by members, group, and task title.
+- **Auth**
+  - Email/password with secure hashing + **Google Login**.
+  - **Magic Link** sign-in flow for quick access.
+- **Polish**
+  - Smooth D&D, responsive UI, and pixel-perfect styling faithful to Monday.
 
 ## Technologies
+- **Stack:** MERN (MongoDB, Express, React, Node.js)
+- **Realtime:** WebSockets for live board updates
+- **API:** REST
+- **Libraries:** Google Login, lodash, react-beautiful-dnd, and more
+- **Styling:** Sass (functions, mixins, variables) for a pixel-perfect layout
 
-The technology stack we used was MERN - MongoDB, Express, React, Node.js.
-The app uses webSockets to update the board in real-time.
-The API calls to the backend are done with the REST API method.
+**Testing & Quality**
+- **Playwright** for end-to-end UI tests
+- **ESLint** for linting and code quality
+- Automated coverage for critical user flows
 
-We have used many thirs side libraries for many goals like google-login, lodash, D&D and more.
-The layout and pixel-perfect were made with Sass (functions, mixins, variables).
+## Getting Started
 
-**Testing & Quality Assurance:**
-- **Playwright** - End-to-end testing framework for comprehensive UI testing
-- **ESLint** - Code linting and quality enforcement
-- Automated testing coverage for critical user workflows 
+Clone the repo:
 
-## Getting started
-
-Head to the repository on top and clone the project or download the files.
-
-```
+```bash
 git clone https://github.com/idandavid1/My-Day
-
-```
-
-Enter the backend folder and make sure you have node_modules installed. After that we will initiate the server with 'npm start':
-
-```
-cd backend
-npm i 
-npm start
-```
-
-You shuold get a console ouput that the server is up and running at port 3030.
-Enter the frontend folder and repeat the same process.
-
-```
-cd frontend
-npm i 
-npm start
-```
-
-You shuold get a console ouput that the server is up and running at localhost:3000.
-
-That's it! The App should be opened automatically, enjoy!
-
-## Showcase
-
-### Homepage
-The landing page in which the user can sign up / login, or press the call to action button to start demo if the are limited with time.
-
-![Homepage image](frontend/src/assets/img/readme/home-page.png "Home-page")
-
-### Board
-All the functionality that you have in Monday. D&D, live-updates, editing tasks to the deepest level, side-menu, editing board members and much more - just [check it out...!](https://monday-8oy3.onrender.com/ "Skello link")
-
-![Main board image](frontend/src/assets/img/readme/table.png "Board-main-page")
-
-### Signup
-We created an e2e authentication flow, including encrypting the users' details, midelwears and ****Google Login***.
-
-![Login image](frontend/src/assets/img/readme/login.png "login-page")
-
-### Task details
-Here the members can add messages and to follow after the activity for every task and to watch it happens live
-
-![Task details image](frontend/src/assets/img/readme/activity.png "task-details")
-![Task details image](frontend/src/assets/img/readme/chat.png "task-details")
-
-### Some mobile!
-Just a taste of the mobile experience. We used different **mixins**, **conditional rendering**, and the **"mobile first"** approach. 
-The layout we have built from the very first moment enabled us to make the website responsive without a lot of effort.
-
-<img src="frontend/src/assets/img/readme/phone-board.png" width="25%" style="float: left"/><img src="frontend/src/assets/img/readme/chat-phone.png" width="25%" style="float: left;"/><img src="frontend/src/assets/img/readme/favorite-phone.png" width="25%" style="float: left;"/><img src="frontend/src/assets/img/readme/activity-phone.png" width="25%" style="float: left;"/>
-
-### Authors
- - [Idan David](https://github.com/idandavid1)
- - [Ofer Gavrilov](https://github.com/oferGavrilov)
- - [Ofek Abramovitch](https://github.com/ofekAbramovitch)
