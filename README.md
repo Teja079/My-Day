@@ -1,24 +1,34 @@
 # MyDay — Pixel-Perfect Monday.com Clone (React + Node.js)
 
-**Live demo:** [https://monday-8oy3.onrender.com](https://monday-8oy3.onrender.com)
+**Live demo:** https://monday-8oy3.onrender.com
 
-MyDay is a table-style task board inspired by Monday.com. I focused on nailing the **look, feel, and interactions** of Monday while adding a few unique twists and solid end-to-end quality: realtime collaboration, robust state management, and Playwright E2E coverage.
+MyDay is a table-style task board inspired by Monday.com. I built it to match Monday’s **look, feel, and interactions** while adding a few unique twists and solid end-to-end quality: **realtime collaboration**, robust state management, and **Playwright** E2E coverage.
 
 If you already know Monday, jump to the [features](#application-features).  
-If you’re new to Monday, read the short [description](#monday-description).  
+If you’re new to Monday, read the [description](#monday-description).  
 If you just want screenshots, head to the [showcase](#showcase).
 
 ![Main board image](frontend/src/assets/img/readme/table.png "Board-main-page")
 
 ---
 
-### Table of Contents
+## Table of Contents
 - [Recent Updates](#recent-updates)
 - [Monday Description](#monday-description)
 - [Application Features](#application-features)
-- [Technologies](#technologies)
+- [Tech Stack](#tech-stack)
+- [Architecture](#architecture)
+- [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
+- [Environment Variables](#environment-variables)
+- [API Overview](#api-overview)
+- [Testing](#testing)
 - [Showcase](#showcase)
+- [Roadmap](#roadmap)
+- [License](#license)
+- [Author](#author)
+
+---
 
 ## Recent Updates
 
@@ -31,7 +41,7 @@ I resolved several critical context-menu bugs:
 - **Create New Item Below** — corrected array copying; insertion works in all groups.
 - **Open Task Modal** — reliable navigation to the task details view.
 
-**Under the hood:**
+**Under the hood**
 - Adopted strict **immutable React state** patterns; removed hidden mutations.
 - Improved error handling and state sync between table and details views.
 - Added **Playwright** tests covering each menu action end-to-end.
@@ -52,7 +62,10 @@ I also implemented **Magic Link authentication** alongside email/password login.
 ## Monday Description
 Monday is a collaborative work manager built around boards: each **board** holds **groups** of **items/tasks** with columns like status, priority, owner, and due date. Users can rearrange everything with Drag & Drop, collaborate live, and track activity.
 
-**MyDay** mirrors these core workflows—D&D, realtime updates, rich task editing, filters, members, and more—so you won’t feel a difference in day-to-day use. Try it here: [MyDay live demo](https://monday-8oy3.onrender.com).
+**MyDay** mirrors these core workflows—D&D, realtime updates, rich task editing, filters, members, and more—so you won’t feel a difference in day-to-day use.  
+Try it here: https://monday-8oy3.onrender.com
+
+---
 
 ## Application Features
 - **Boards & Groups**
@@ -72,15 +85,56 @@ Monday is a collaborative work manager built around boards: each **board** holds
 - **Polish**
   - Smooth D&D, responsive UI, and pixel-perfect styling faithful to Monday.
 
-## Technologies
-- **Stack:** MERN (MongoDB, Express, React, Node.js)
-- **Realtime:** WebSockets for live board updates
+---
+
+## Tech Stack
+- **Frontend:** React, react-beautiful-dnd, MUI, Day.js, Axios, Sass
+- **Backend:** Node.js, Express, MongoDB (Mongoose)
+- **Realtime:** WebSockets (Socket.IO)
+- **Auth:** JWT + cookies, Google Login, Magic Link
+- **Quality:** Playwright (E2E), ESLint
 - **API:** REST
-- **Libraries:** Google Login, lodash, react-beautiful-dnd, and more
-- **Styling:** Sass (functions, mixins, variables) for a pixel-perfect layout
 
-**Testing & Quality**
-- **Playwright** for end-to-end UI tests
-- **ESLint** for linting and code quality
-- Automated coverage for critical user flows
+---
 
+Board
+
+Everything you expect from Monday: D&D, live updates, deep task editing, side menu, board members, and more — try the live demo.
+
+Signup / Login
+
+End-to-end auth flow with secure hashing, middlewares, Google Login, and Magic Link.
+
+Task Details
+
+Per-task activity stream and real-time chat.
+
+
+
+
+Mobile
+
+Responsive from day one using mixins, conditional rendering, and a mobile-first approach.
+
+<img src="frontend/src/assets/img/readme/phone-board.png" width="25%" style="float: left"/><img src="frontend/src/assets/img/readme/chat-phone.png" width="25%" style="float: left;"/><img src="frontend/src/assets/img/readme/favorite-phone.png" width="25%" style="float: left;"/><img src="frontend/src/assets/img/readme/activity-phone.png" width="25%" style="float: left;"/>
+
+Roadmap
+
+Subitems + column customization UI
+
+Board templates & quick-create flows
+
+Notifications center + @mentions
+
+Expand Playwright coverage (drag-and-drop paths, filters)
+
+Docker compose for one-command local setup
+
+License
+
+This project is for educational/portfolio purposes and is not affiliated with Monday.com.
+
+
+Author
+
+Tejasriram “Teja” Parvathaneni
