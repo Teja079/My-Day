@@ -10,4 +10,4 @@
         "server:prod:mac": "export NODE_ENV=production&&node server.js",
         "seed": "node scripts/seed.js",
         "clear-activities": "node scripts/clear-activities.js",
-        "generate
+        "generate-secret
