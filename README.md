@@ -1,14 +1,8 @@
 # MyDay — Pixel-Perfect Monday.com Clone (React + Node.js)
 
-**Live demo:** https://monday-8oy3.onrender.com
 
 MyDay is a table-style task board inspired by Monday.com. I built it to match Monday’s **look, feel, and interactions** while adding a few unique twists and solid end-to-end quality: **realtime collaboration**, robust state management, and **Playwright** E2E coverage.
 
-If you already know Monday, jump to the [features](#application-features).  
-If you’re new to Monday, read the [description](#monday-description).  
-If you just want screenshots, head to the [showcase](#showcase).
-
-![Main board image](frontend/src/assets/img/readme/table.png "Board-main-page")
 
 ---
 
