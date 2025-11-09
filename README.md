@@ -129,6 +129,3 @@ License
 This project is for educational/portfolio purposes and is not affiliated with Monday.com.
 
 
-Author
-
-Tejasriram “Teja” Parvathaneni
