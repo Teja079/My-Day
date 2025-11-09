@@ -84,9 +84,3 @@ Monday is a collaborative work manager built around boards: each **board** holds
 - **ESLint** for linting and code quality
 - Automated coverage for critical user flows
 
-## Getting Started
-
-Clone the repo:
-
-```bash
-git clone https://github.com/idandavid1/My-Day
